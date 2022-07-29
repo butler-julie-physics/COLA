@@ -1,7 +1,7 @@
 # Jupyter Books: An Easy to Use Software for Creating Digital Textbooks
 
 ## What are Jupyter Books?
-Jupyter Book is a software which is used create digital books, released by the company Jupyter.  Jupyter is also the creator of Jupyter Notebooks, a popular software for running Python code that allows for text blocks to be interspersed with code blocks.  A tutorial for how to use Jupyter Books is beyond the scope of this project, but the [Jupyter Books website](https://jupyterbook.org/en/stable/intro.html) has an excellent guide for getting started and additional resources are linked at the bottom of this page.
+Jupyter Book is a software which is used create digital books, released by the company Jupyter.  Jupyter is also the creator of Jupyter Notebooks, a popular software for running Python code that allows for text blocks to be interspersed with code blocks.  A tutorial for how to use Jupyter Books is beyond the scope of this project, but the [Jupyter Books website](https://jupyterbook.org/en/stable/intro.html) has an excellent guide for getting started.
 
 ## Why Jupyter Books Make Good Digital Textbooks
 Because Jupyter Books creates a digital book, it makes it an natural choice for use in creating digital textbooks.  Additionally, becuase it supports integration with Jupyter Notebooks code, mathematical equations, videos, and interactive Python widgets can easily be included, making Jupyter Books an ideal choice for creating digital textbooks for STEM classes.  Listed below are some benefits of using Jupyter Books to create digital textbooks, along with some possible problems that could occur.   
@@ -25,4 +25,3 @@ The second chapter of this Jupyter Book contains a module I previously developed
 ## Conclusion
 Despite the need to learn new softwares to use Jupyter Books, it is an easy to use software for creating digital textbooks, especially in classes that rely heavily on code and mathematical equations.  Much pre-exiting material can be imported with minimal to no changes.  Additionally, since the software is free and hosting the Jupyter Book as a website on GitHub is free, there is no financial cost associated with exploring digital textbooks in your classes with Jupyter Books!
 
-## Additional Resources
