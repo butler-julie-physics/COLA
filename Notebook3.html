@@ -1,0 +1,912 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notebook 3: Solving Differential Equations with Neural Networks &#8212; Jupyter Books as Digital Textbooks</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Notebook 2: What is a Neural Network?" href="Notebook2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Jupyter Books as Digital Textbooks</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Jupyter Books: An Easy to Use Software for Creating Digital Textbooks
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="NN_for_CM.html">
+   Solving Differential Equations in Classical Mechanics with Neural Networks
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="Notebook1.html">
+     Notebook 1: Solving Differential Equations Numerically
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Notebook2.html">
+     Notebook 2: What is a Neural Network?
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Notebook 3: Solving Differential Equations with Neural Networks
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Notebook3.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FNotebook3.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Notebook3.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-solving-differential-equations-with-neural-networks">
+   Overview of Solving Differential Equations with Neural Networks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#support-function">
+   Support Function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#defining-the-model">
+   Defining the Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#define-the-acceleration">
+   Define the Acceleration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-the-neural-network">
+   Creating the Neural Network
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trial-position">
+   Trial Position
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#defining-the-loss-function">
+   Defining the Loss Function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-the-neural-network">
+   Train the Neural Network
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyze-the-results">
+   Analyze The Results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#improving-the-accuracy-of-the-neural-network">
+   Improving the Accuracy of the Neural Network
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hyperparameter-tuning">
+     Hyperparameter Tuning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#smaller-time-step">
+     Smaller Time Step
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice-what-you-have-learned">
+   Practice What You Have Learned
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="notebook-3-solving-differential-equations-with-neural-networks">
+<h1>Notebook 3: Solving Differential Equations with Neural Networks<a class="headerlink" href="#notebook-3-solving-differential-equations-with-neural-networks" title="Permalink to this headline">¶</a></h1>
+<p>View this notebook on <a class="reference external" href="https://colab.research.google.com/drive/1uHGsQ0q4DUQ4Q-rcRDlYH3IeHi3OLGci?usp=sharing">Google Colab</a>.</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>An important result to come from studying neural networks is a theorm known as the Universal Approximation Theorem.  It states that a neural network with one hidden layer and a finite number of neurons can approximate any function to any given accuracy.  Of course in practice it may be hard to train a neural network to an accuracy wanted, but we can generally get the accuracy relatively high.</p>
+<p>The Universal Approximation Theorem is important for this module because we will be using it to validate the use of neural networks to model the position of an object.  We will do this given only the acceleration of the object and will work up to creating a neural network that models the position.  In doing so, we will be creating a neural network that solves the following differential equation:</p>
+<div class="math notranslate nohighlight">
+\[\frac{d^2y}{dt^2} = a(t,v,y,\vec{c}),\]</div>
+<p>where the acceleration of the object, a, may be a function of time, velocity, position, and/or any constants <span class="math notranslate nohighlight">\(\vec{c}\)</span>.</p>
+<p>The below code cells walk you through the process of setting up a neural network that will solve a second order differential equation (in this case using acceleration to find position).  We will compare the results from the neural network to both the exact solution and the results from numerically solving the differential equation using the Velocity-Verlet method (the most accurate of the numerical differential equation solvers investigated).</p>
+</div>
+<div class="section" id="overview-of-solving-differential-equations-with-neural-networks">
+<h2>Overview of Solving Differential Equations with Neural Networks<a class="headerlink" href="#overview-of-solving-differential-equations-with-neural-networks" title="Permalink to this headline">¶</a></h2>
+<p>When solving differential equations with neural networks, we assume that the neural network will approximate the function that we are trying to solve and we train the neural network so that its n-th derivative matches the nth-order differential equation we are trying to solve.  For example, when solving for position given acceleration, we can formalate this as a second order differential equation.  Therefore, when we are approximating the position on an object with a neural network, we want to train the network such that its second derivative is as close to the known acceleration as possible.</p>
+<p>Deriving a neural network may seem like an abstract concept, but the same automatic differentiation library we used in Notebook 2 (JAX) can be used to derive a neural network.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># IMPORTS</span>
+<span class="c1"># Math for the ceiling function</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">ceil</span>
+<span class="c1"># Matplotlib for graphing capabilities</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># Modules from the JAX library for creating neural networks</span>
+<span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>
+<span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">grad</span>
+<span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">random</span> <span class="k">as</span> <span class="n">npr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">nn</span><span class="o">/</span><span class="n">x8vw0d756190nyy38jxd8nlh0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_17238</span><span class="o">/</span><span class="mf">2266482407.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># Modules from the JAX library for creating neural networks</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">grad</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">random</span> <span class="k">as</span> <span class="n">npr</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;jax&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="support-function">
+<h2>Support Function<a class="headerlink" href="#support-function" title="Permalink to this headline">¶</a></h2>
+<p>The below two code cells define a function that calcualtes the root mean-squared error between two NumPy arrays (for error analysis) and the a common activation function for neural networks (the sigmoid function).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rmse</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inputs:</span>
+<span class="sd">            A,B (NumPy arrays)</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Unnamed (a float): the RMSE error between A and B</span>
+<span class="sd">        Calculates the RMSE error between A and B.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">B</span><span class="p">),</span><span class="s2">&quot;The data sets must be the same length to calcualte</span><span class="se">\</span>
+<span class="s2">        the RMSE.&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">((</span><span class="n">A</span><span class="o">-</span><span class="n">B</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates the value of the sigmoid function for </span>
+<span class="sd">        a given input of x</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mf">1.</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">jnp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="defining-the-model">
+<h2>Defining the Model<a class="headerlink" href="#defining-the-model" title="Permalink to this headline">¶</a></h2>
+<p>Now let’s define the analytic solution for our position as well as the Velocity-Verlet solution.  The code in the next two cells is taken from the first notebook in this module (Notebook 1: Solving Differential Equations Numerically).  Please see that notebook for a review of these code cells if needed.  The difference is that we define y=0 to be where the object is released in the air (since coordinate systems are arbitrary this is fine).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">y_analytic</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inputs:</span>
+<span class="sd">            t (a 1D NumPy array): the times to calculate the exact position at</span>
+<span class="sd">            b (a float): the linear drag coefficient</span>
+<span class="sd">            m (a float): the mass of the object</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            y_exact (a 1D NumPy array): the exact y position of the object at </span>
+<span class="sd">                each time step</span>
+<span class="sd">        Calculates the exact position for an object in freefall with linear drag</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+   <span class="c1"># Define the gravitational constant</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9.81</span>
+
+    <span class="c1"># Set up the initial conditions (velocity and height)</span>
+    <span class="n">v_0</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">y_0</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Define the termminal velocity and the characteristic time</span>
+    <span class="n">v_ter</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span><span class="n">g</span><span class="o">/</span><span class="n">b</span>
+    <span class="n">tau</span> <span class="o">=</span> <span class="n">v_ter</span><span class="o">/</span><span class="n">g</span>
+
+    <span class="c1"># Define and return the exact solution</span>
+    <span class="n">y_exact</span> <span class="o">=</span> <span class="n">v_ter</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="p">(</span><span class="n">v_0</span><span class="o">-</span><span class="n">v_ter</span><span class="p">)</span><span class="o">*</span><span class="n">tau</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="o">/</span><span class="n">tau</span><span class="p">))</span><span class="o">+</span><span class="n">y_0</span>
+    <span class="k">return</span> <span class="n">y_exact</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">velocity_verlet</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">DeltaT</span><span class="p">,</span><span class="n">tfinal</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inputs:</span>
+<span class="sd">            b (a float): the linear drag coefficient</span>
+<span class="sd">            m (a float): the mass of the object</span>
+<span class="sd">            DeltaT (a float): the time step to calculate the position at</span>
+<span class="sd">            tfinal (a float): the last time to calculate the position at</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            y_vv (a 1D NumPy array): the predicted position of the object at </span>
+<span class="sd">                each time step, calculated using the Velocity-Verlet method</span>
+<span class="sd">        Predicts the position of an object in freefall with linear drag using the</span>
+<span class="sd">        Velocity-Cerlet method for solving differential equations</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Define the near Earth gravitational constant</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9.81</span>
+
+    <span class="c1"># set up arrays </span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">ceil</span><span class="p">(</span><span class="n">tfinal</span><span class="o">/</span><span class="n">DeltaT</span><span class="p">)</span> <span class="c1">#Assuming tinitial=0</span>
+
+    <span class="c1"># set up arrays for t, a, v, and y and we can compare our results with analytical ones</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">y_vv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="c1"># Initial conditions (Change these if needed)</span>
+    <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1">#m/s</span>
+    <span class="n">y_vv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1">#m</span>
+
+    <span class="c1"># Start integrating using Euler-Cromer</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># expression for acceleration</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span> <span class="o">-</span> <span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="c1"># update position</span>
+        <span class="n">y_vv</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_vv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">DeltaT</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">DeltaT</span><span class="o">**</span><span class="mi">2</span>
+        <span class="c1"># updated expression for acceleration</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span> <span class="o">-</span> <span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># update velocity</span>
+        <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">DeltaT</span><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="c1"># update time to next time step and compute analytical answer</span>
+        <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">DeltaT</span>
+
+    <span class="k">return</span> <span class="n">y_vv</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="define-the-acceleration">
+<h2>Define the Acceleration<a class="headerlink" href="#define-the-acceleration" title="Permalink to this headline">¶</a></h2>
+<p>The below function defines the acceleration for an object in free fall with linear drag.  The acceleration here depends only on the velocity of the object and the linear drag coefficient, b.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">acceleration</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inputs:</span>
+<span class="sd">            t (a float): the time to calculate the acceleration at</span>
+<span class="sd">            v (a float): the velocity at time t</span>
+<span class="sd">            b (a float): the linear drag coefficient</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Unnamed (a float): the acceleration for the given set</span>
+<span class="sd">                of parameters</span>
+<span class="sd">        Calculates and returns the acceleration of the object at a given time t</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9.81</span> <span class="c1">#m/s^2</span>
+    <span class="k">return</span> <span class="n">g</span><span class="o">-</span><span class="n">b</span><span class="o">*</span><span class="n">v</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="creating-the-neural-network">
+<h2>Creating the Neural Network<a class="headerlink" href="#creating-the-neural-network" title="Permalink to this headline">¶</a></h2>
+<p>Now let’s create a neural network that has one hidden layer and uses the sigmoid activation function on the hidden layer and no activation function on the outer layer.  If the below code seems unfamilar, go back and look through the second notebook of this module (Notebook 2: What is a Neural Network?).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">neural_network</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inputs:</span>
+<span class="sd">            W (a list of length 2): the weights of the neural </span>
+<span class="sd">                network</span>
+<span class="sd">            x (a float): the input value of the neural network</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Unnamed (a float): The output of the neural network</span>
+<span class="sd">        Defines a neural network with one hidden layer.  The </span>
+<span class="sd">        number of neurons in the hidden layer is the length of </span>
+<span class="sd">        W[0]. The activation function is the sigmoid function </span>
+<span class="sd">        on the hidden layer an none on the output layer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Calculate the output for the neurons in the hidden layer</span>
+    <span class="n">hidden_neuron</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">W</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="c1"># Calculate the result for the output neuron</span>
+    <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">hidden_neuron</span><span class="p">,</span> <span class="n">W</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="trial-position">
+<h2>Trial Position<a class="headerlink" href="#trial-position" title="Permalink to this headline">¶</a></h2>
+<p>The below function defines the trial position as a function of the neural network (a general form we assume the equation for the position will take that will be fine-tuned by training the neural network).  Here we are assuming that we know the starting position y(t=0) and the starting velocity v(t=0), making this an initial value problem.  Let’s assume that your trial solution has the form:</p>
+<div class="math notranslate nohighlight">
+\[y_{trial}(t) = A + Bt + t^2NN(W,t),\]</div>
+<p>where A and B are a constants set by the initial conditions and NN is the output of the neural network that depends on both the weights (W) and the time.  As it turns out, A = y(t=0) and B = v(t=0) (both of which will be zero in the specific case of this problem).  This makes the final form of our trial solution:</p>
+<div class="math notranslate nohighlight">
+\[y_{trial}(t) = t^2NN(W,t).\]</div>
+<p>Note that we could have used any trial solution for the position as long as it satisfied the initial conditions.  The choice for this particular form of trial solution is discussed <a class="reference external" href="https://arxiv.org/pdf/physics/9705023.pdf">here</a>, though the mathematics can get a bit complicated in places.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">y_trial</span><span class="p">(</span><span class="n">ti</span><span class="p">,</span> <span class="n">nn</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inputs:</span>
+<span class="sd">            ti (a float): the time to calcualte the position at</span>
+<span class="sd">            nn (a float): the neural network prediction at time ti</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Unnamed (a float): The neural network prediction for the position at</span>
+<span class="sd">                the given time</span>
+<span class="sd">        The neural network preduction for the position of the object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">ti</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">nn</span>
+
+<span class="c1"># The trial velocity is the derivative of the trial position   </span>
+<span class="n">v_trial</span> <span class="o">=</span> <span class="n">grad</span><span class="p">(</span><span class="n">y_trial</span><span class="p">)</span>
+<span class="c1"># The trial acceleration is the derivative of the trial velocity</span>
+<span class="n">a_trial</span> <span class="o">=</span> <span class="n">grad</span><span class="p">(</span><span class="n">v_trial</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="defining-the-loss-function">
+<h2>Defining the Loss Function<a class="headerlink" href="#defining-the-loss-function" title="Permalink to this headline">¶</a></h2>
+<p>The loss function is a function that will have a minimum (preferably zero) if the results of the neural network match what we expect them to.  Therefore we will define the loss of this neural network as the squared error between the second derivative of the neural network and the expected value for the accelearation.  Remember that if the neural network is modelling the position of an object, then its second derivative will be the acceleration of the object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">loss_function</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inputs:</span>
+<span class="sd">            W (a list): the weights of the neural network</span>
+<span class="sd">            t (a 1D NumPy array): the times to calculate the predicted position at</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            loss_sum (a float): The total loss over all times</span>
+<span class="sd">        The loss function for the neural network to solve for position given </span>
+<span class="sd">        a function for acceleration.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Define a variable to hold the total loss</span>
+    <span class="n">loss_sum</span> <span class="o">=</span> <span class="mf">0.</span>
+    
+    <span class="c1"># Loop through each individual time</span>
+    <span class="k">for</span> <span class="n">ti</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+        <span class="c1"># Get the output of the neural network with the given set of weights</span>
+        <span class="n">nn</span> <span class="o">=</span> <span class="n">neural_network</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">ti</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="c1"># The prediction for y is related to the neural network</span>
+        <span class="n">y_nn</span> <span class="o">=</span> <span class="n">y_trial</span><span class="p">(</span><span class="n">ti</span><span class="p">,</span> <span class="n">nn</span><span class="p">)</span>
+        <span class="c1"># The prediction for velocity is the derivative of the prediction for y</span>
+        <span class="n">v_nn</span> <span class="o">=</span> <span class="n">v_trial</span><span class="p">(</span><span class="n">ti</span><span class="p">,</span> <span class="n">nn</span><span class="p">)</span>
+        <span class="c1"># The prediction for acceleration is the derivative of the prediction</span>
+        <span class="c1"># for velocity</span>
+        <span class="n">a_nn</span> <span class="o">=</span> <span class="n">a_trial</span><span class="p">(</span><span class="n">ti</span><span class="p">,</span> <span class="n">nn</span><span class="p">)</span>
+        
+        <span class="c1"># Calculate the true accerlation using the defined function and the </span>
+        <span class="c1"># predictions for y and velocity</span>
+        <span class="n">a_true</span> <span class="o">=</span> <span class="n">acceleration</span><span class="p">(</span><span class="n">v_nn</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> 
+        
+        <span class="c1"># Find the error in the true acceleration and the neural network</span>
+        <span class="c1"># acceleration</span>
+        <span class="n">err_sqr</span> <span class="o">=</span> <span class="p">(</span><span class="n">a_nn</span> <span class="o">-</span> <span class="n">a_true</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+        <span class="c1"># Update the loss sum</span>
+        <span class="n">loss_sum</span> <span class="o">+=</span> <span class="n">err_sqr</span>
+        
+    <span class="c1"># Return the loss sum    </span>
+    <span class="k">return</span> <span class="n">loss_sum</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="train-the-neural-network">
+<h2>Train the Neural Network<a class="headerlink" href="#train-the-neural-network" title="Permalink to this headline">¶</a></h2>
+<p>Training neural networks is covered in the second notebook of this module (Notebook 2: What is a Neural Network?).  The code below to train our neural network is very similar.  However, note that here we do not use a train/test split on our data set since we are using the neural network to generate the entire position dataset given only the acceleration.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the constants: linear drag coefficient and mass</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="c1"># Define the number of time steps, the final time, and the time step (all in seconds)</span>
+<span class="n">nt</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">tfinal</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">tfinal</span><span class="o">/</span><span class="n">nt</span>
+
+<span class="c1"># Define the time array and generate the exact solution and the numerical solution</span>
+<span class="c1"># using velocity-verlet</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tfinal</span><span class="p">,</span> <span class="n">nt</span><span class="p">)</span>    
+
+<span class="c1"># Generate the key random number</span>
+<span class="n">key</span> <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># Set the number of neurons in the hidden layer</span>
+<span class="n">number_hidden_neurons</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="c1"># Initialize the weights of the neural network with random numbers</span>
+<span class="n">W</span> <span class="o">=</span> <span class="p">[</span><span class="n">npr</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">key</span><span class="p">,(</span><span class="mi">1</span><span class="p">,</span> <span class="n">number_hidden_neurons</span><span class="p">)),</span> <span class="n">npr</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">key</span><span class="p">,(</span><span class="n">number_hidden_neurons</span><span class="p">,</span> <span class="mi">1</span><span class="p">))]</span>
+
+<span class="c1"># Set the learning rate and the number of training iterations for the network</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">num_training_iterations</span> <span class="o">=</span> <span class="mi">25</span>
+
+<span class="c1"># Train the neural network for the specified number of iterations</span>
+<span class="c1"># Update the weights using the learning rates</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_training_iterations</span><span class="p">):</span>
+    <span class="n">loss_grad</span> <span class="o">=</span>  <span class="n">grad</span><span class="p">(</span><span class="n">loss_function</span><span class="p">)(</span><span class="n">W</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">W</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">W</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">loss_grad</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">W</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">W</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">loss_grad</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="analyze-the-results">
+<h2>Analyze The Results<a class="headerlink" href="#analyze-the-results" title="Permalink to this headline">¶</a></h2>
+<p>Now let’s compare the positions generated by the trained neural network both to the results from the Velocity-Verlet method and to the exact solution.  First we need to generate the positions at every time step for all three methods.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the exact solution at every t value</span>
+<span class="n">y_exact</span> <span class="o">=</span> <span class="n">y_analytic</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">m</span><span class="p">)</span>
+<span class="c1"># Approximate the position using Velocity-Verlet at every t value</span>
+<span class="n">y_vv</span> <span class="o">=</span> <span class="n">velocity_verlet</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">tfinal</span><span class="p">)</span>
+<span class="c1"># Use the trained neural network to generate the predicted results for y at</span>
+<span class="c1"># every t value</span>
+<span class="n">y_nn</span> <span class="o">=</span> <span class="p">[</span><span class="n">y_trial</span><span class="p">(</span><span class="n">ti</span><span class="p">,</span> <span class="n">neural_network</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">ti</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">ti</span> <span class="ow">in</span> <span class="n">t</span><span class="p">]</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s graphically analyze the results by plotting all three results on the same plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y_exact</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Exact&quot;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y_nn</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;NN&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y_vv</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Velocity-Verlet&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (seconds)&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Position (meters)&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Position (meters)&#39;)
+</pre></div>
+</div>
+<img alt="_images/Notebook3_23_1.png" src="_images/Notebook3_23_1.png" />
+</div>
+</div>
+<p>Finally, let’s calculate the RMSE error between the exact position and the position approximated by the neural network and the exact position and the position approximated by the Velocity-Verlet method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RMSE of the Velocity-Verlet Solution:&quot;</span><span class="p">,</span> <span class="n">rmse</span><span class="p">(</span><span class="n">y_vv</span><span class="p">,</span><span class="n">y_exact</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RMSE of the Neural Network Solution:&quot;</span><span class="p">,</span> <span class="n">rmse</span><span class="p">(</span><span class="n">y_exact</span><span class="p">,</span><span class="n">y_nn</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RMSE of the Velocity-Verlet Solution: 0.70630900830357
+RMSE of the Neural Network Solution: 0.09494330770895291
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>EXERCISE 1</strong>: In your opinion, does the Velocity-Verlet method or the neural network approximation work better for modelling the position of an object given its acceleration.  Consider not just accuracy but also other factors such as run time and complexity.</p>
+<p>Delete this text and add your answer here.</p>
+</div>
+<div class="section" id="improving-the-accuracy-of-the-neural-network">
+<h2>Improving the Accuracy of the Neural Network<a class="headerlink" href="#improving-the-accuracy-of-the-neural-network" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="hyperparameter-tuning">
+<h3>Hyperparameter Tuning<a class="headerlink" href="#hyperparameter-tuning" title="Permalink to this headline">¶</a></h3>
+<p>One of the easiest (though time consuming) methods to improve the accuracy of a neural network is through a process known as hyperparameter tuning.  The output of a neural network depends on many factors, three of which being the learning rate, the number of training iterations, and the number of neurons in each hidden layer.  Hyperparameter tuning is a process through which we train the network using various combinations of values for these parameters to see which combination gives us the best results.</p>
+<p>The below code cell runs a small hyperparameter tuning process on our neural network.  Note that even though only three options are used for the learning rate, the number of training iterations, and the number of neurons in the hidden layer we will be training and analyzing 27 different neural networks, so this is a time consuming process even with a small number of options.</p>
+<p><strong>WARNING</strong>: The below cell will take a long time to run!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">best_err</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">best_lr</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">best_num</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">best_neurons</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">for</span> <span class="n">lr</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">neurons</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]:</span>
+            <span class="n">W</span> <span class="o">=</span> <span class="p">[</span><span class="n">npr</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">key</span><span class="p">,(</span><span class="mi">1</span><span class="p">,</span> <span class="n">neurons</span><span class="p">)),</span> <span class="n">npr</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">key</span><span class="p">,(</span><span class="n">neurons</span><span class="p">,</span> <span class="mi">1</span><span class="p">))]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+                <span class="n">loss_grad</span> <span class="o">=</span>  <span class="n">grad</span><span class="p">(</span><span class="n">loss_function</span><span class="p">)(</span><span class="n">W</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+
+                <span class="n">W</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">W</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">loss_grad</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">W</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">W</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">loss_grad</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="n">y_trial</span><span class="p">(</span><span class="n">ti</span><span class="p">,</span> <span class="n">neural_network</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">ti</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">ti</span> <span class="ow">in</span> <span class="n">t</span><span class="p">]</span> 
+            <span class="n">err</span> <span class="o">=</span> <span class="n">rmse</span><span class="p">(</span><span class="n">y_exact</span><span class="p">,</span><span class="n">res</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hyperparameter Combination and Error: (&quot;</span><span class="p">,</span><span class="n">lr</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span><span class="n">neurons</span><span class="p">,</span><span class="s2">&quot;)&quot;</span><span class="p">,</span><span class="n">err</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">err</span> <span class="o">&lt;</span> <span class="n">best_err</span><span class="p">:</span>
+                <span class="n">best_err</span> <span class="o">=</span> <span class="n">err</span>
+                <span class="n">best_lr</span> <span class="o">=</span> <span class="n">lr</span>
+                <span class="n">best_num</span> <span class="o">=</span> <span class="n">num</span>
+                <span class="n">best_neurons</span> <span class="o">=</span> <span class="n">neurons</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best Hyperparameter Combination and Error: (&quot;</span><span class="p">,</span><span class="n">best_lr</span><span class="p">,</span> <span class="n">best_num</span><span class="p">,</span> <span class="n">best_neurons</span><span class="p">,</span><span class="s2">&quot;)&quot;</span><span class="p">,</span><span class="n">best_err</span><span class="p">)</span>          
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hyperparameter Combination and Error: ( 0.0001 25 2 ) 6.825785639881246
+Hyperparameter Combination and Error: ( 0.0001 25 5 ) 4.634791661544085
+Hyperparameter Combination and Error: ( 0.0001 25 10 ) 2.609767987482142
+Hyperparameter Combination and Error: ( 0.0001 50 2 ) 3.300284543361196
+Hyperparameter Combination and Error: ( 0.0001 50 5 ) 1.0619449696315955
+Hyperparameter Combination and Error: ( 0.0001 50 10 ) 0.5578047367414414
+Hyperparameter Combination and Error: ( 0.0001 100 2 ) 0.4883778096095776
+Hyperparameter Combination and Error: ( 0.0001 100 5 ) 0.5416812386045258
+Hyperparameter Combination and Error: ( 0.0001 100 10 ) 0.08299809479157315
+Hyperparameter Combination and Error: ( 0.001 25 2 ) 1.2486916624075954
+Hyperparameter Combination and Error: ( 0.001 25 5 ) 0.39695221178248846
+Hyperparameter Combination and Error: ( 0.001 25 10 ) 0.09494330770895291
+Hyperparameter Combination and Error: ( 0.001 50 2 ) 0.7942214993333072
+Hyperparameter Combination and Error: ( 0.001 50 5 ) 0.1955415092141123
+Hyperparameter Combination and Error: ( 0.001 50 10 ) 0.04840992014028787
+Hyperparameter Combination and Error: ( 0.001 100 2 ) 0.16108626524869032
+Hyperparameter Combination and Error: ( 0.001 100 5 ) 0.03549627366372666
+Hyperparameter Combination and Error: ( 0.001 100 10 ) 0.02141359789627577
+Hyperparameter Combination and Error: ( 0.01 25 2 ) 0.2982068065535346
+Hyperparameter Combination and Error: ( 0.01 25 5 ) 9.040424014569785
+Hyperparameter Combination and Error: ( 0.01 25 10 ) nan
+Hyperparameter Combination and Error: ( 0.01 50 2 ) 0.1645828002303167
+Hyperparameter Combination and Error: ( 0.01 50 5 ) 9.040399242006798
+Hyperparameter Combination and Error: ( 0.01 50 10 ) nan
+Hyperparameter Combination and Error: ( 0.01 100 2 ) 0.07011052816014987
+Hyperparameter Combination and Error: ( 0.01 100 5 ) 9.040264569646913
+Hyperparameter Combination and Error: ( 0.01 100 10 ) nan
+Best Hyperparameter Combination and Error: ( 0.001 100 10 ) 0.02141359789627577
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>EXERCISE 2:</strong> What was the optimal set of parameters and what was the associated RMSE error?  In your opinion, does the decrease in RMSE justify the time needed for the hyperparameter tuning?</p>
+<p>Delete this text and add your answer here.</p>
+<p>Though we are only tuning three different hyperparameter here, there are many more options we could consider.  Things like the number of hidden layers, the number of neurons per hidden layer, and the activation function per hidden layer are all hyperparamters that could be adjusted to improve the accuracy of a neural network.</p>
+</div>
+<div class="section" id="smaller-time-step">
+<h3>Smaller Time Step<a class="headerlink" href="#smaller-time-step" title="Permalink to this headline">¶</a></h3>
+<p>As seen on the first notebook of this module (Notebook 1: Solving Differential Equations Numerically), a smaller time step makes the numerical differential equation solvers more accurate.  However, this does come with an increased run time.</p>
+<p>The same should be true for our neural network solution (a smaller step size leads to a greater accuracy but a longer run time).  Let’s test that below using a step size that is 4x smaller than previously used.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the constants: linear drag coefficient and mass</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="c1"># Define the number of time steps, the final time, and the time step (all in seconds)</span>
+<span class="n">nt</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">tfinal</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">tfinal</span><span class="o">/</span><span class="n">nt</span>
+
+<span class="c1"># Define the time array and generate the exact solution and the numerical solution</span>
+<span class="c1"># using velocity-verlet</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tfinal</span><span class="p">,</span> <span class="n">nt</span><span class="p">)</span>    
+
+<span class="c1"># Generate the key random number</span>
+<span class="n">key</span> <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># Set the number of neurons in the hidden layer</span>
+<span class="n">number_hidden_neurons</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="c1"># Initialize the weights of the neural network with random numbers</span>
+<span class="n">W</span> <span class="o">=</span> <span class="p">[</span><span class="n">npr</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">key</span><span class="p">,(</span><span class="mi">1</span><span class="p">,</span> <span class="n">number_hidden_neurons</span><span class="p">)),</span> <span class="n">npr</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">key</span><span class="p">,(</span><span class="n">number_hidden_neurons</span><span class="p">,</span> <span class="mi">1</span><span class="p">))]</span>
+
+<span class="c1"># Set the learning rate and the number of training iterations for the network</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">num_training_iterations</span> <span class="o">=</span> <span class="mi">25</span>
+
+<span class="c1"># Train the neural network for the specified number of iterations</span>
+<span class="c1"># Update the weights using the learning rates</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_training_iterations</span><span class="p">):</span>
+    <span class="n">loss_grad</span> <span class="o">=</span>  <span class="n">grad</span><span class="p">(</span><span class="n">loss_function</span><span class="p">)(</span><span class="n">W</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">W</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">W</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">loss_grad</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">W</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">W</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">loss_grad</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Calculate the exact solution at every t value</span>
+<span class="n">y_exact</span> <span class="o">=</span> <span class="n">y_analytic</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">m</span><span class="p">)</span>
+<span class="c1"># Approximate the position using Velocity-Verlet at every t value</span>
+<span class="n">y_vv</span> <span class="o">=</span> <span class="n">velocity_verlet</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">tfinal</span><span class="p">)</span>
+<span class="c1"># Use the trained neural network to generate the predicted results for y at</span>
+<span class="c1"># every t value</span>
+<span class="n">y_nn</span> <span class="o">=</span> <span class="p">[</span><span class="n">y_trial</span><span class="p">(</span><span class="n">ti</span><span class="p">,</span> <span class="n">neural_network</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">ti</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">ti</span> <span class="ow">in</span> <span class="n">t</span><span class="p">]</span>   
+
+<span class="c1"># Analyze the RMSE of both errors compared to the exact solution</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RMSE of the Velocity-Verlet Solution:&quot;</span><span class="p">,</span> <span class="n">rmse</span><span class="p">(</span><span class="n">y_vv</span><span class="p">,</span><span class="n">y_exact</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RMSE of the Neural Network Solution:&quot;</span><span class="p">,</span> <span class="n">rmse</span><span class="p">(</span><span class="n">y_exact</span><span class="p">,</span><span class="n">y_nn</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RMSE of the Velocity-Verlet Solution: 0.17338892752467963
+RMSE of the Neural Network Solution: 0.895014010662905
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>EXERCISE 3</strong>: In your opinion was this error significantly low enough to justify the time needed to decrease the step size?  Consider this for both the neural network and the Velocity-Verlet results.</p>
+<p>Delete this text and add your answer here.</p>
+<p><strong>EXERCISE 4:</strong> Change the above code to have the optimal set of hyperparameters found above.  Does this improve the result from the neural network?</p>
+<p>Delete this text and add your answer here.</p>
+</div>
+</div>
+<div class="section" id="practice-what-you-have-learned">
+<h2>Practice What You Have Learned<a class="headerlink" href="#practice-what-you-have-learned" title="Permalink to this headline">¶</a></h2>
+<p>Using the above notebook as a guide, complete the following exercises.</p>
+<ol class="simple">
+<li><p>Consider a box sliding across a rough surface.  The box is given a push such that its initial velocity is 10m/s and the coefficient of static friction between the box and the surface is 0.01.  What is the analytical expression for the motion of the box?  How long does it take until the box will stop moving (this will be our tfinal)?</p></li>
+<li><p>Create a function that will produce the analytical position of the box at a given time.  Consider what other parameters may need to be arguments of this function as well (mass of box, kinetic coefficient of friction, etc.).</p></li>
+<li><p>Create a function that numerically solves for the position of the box using the Velocity-Verlet method.  What should be the arguments to this function?</p></li>
+<li><p>Considering the intial conditions of the box (y<span class="math notranslate nohighlight">\(_0\)</span> = 0m and v<span class="math notranslate nohighlight">\(_0\)</span> = 10m/s), what should the trial solution for the neural network solution be?  Create a function called y_trial with your answer (use the above y_trial function as a guide).</p></li>
+<li><p>Using the loss function and neural network training code above (just copy and paste it below), train a neural network for your new system.  How do the results of your neural network compare to the exact solution and to the Velocity-Verlet solution?</p></li>
+<li><p>Are you happy with the results from your neural network?  If not, try to use a combination of hyperparameter tuning and reducing the step size to improve your results.</p></li>
+<li><p>As the coefficient of kinetic friction is increase, the position of the box as a function of time should become less linear and more quadratic.  Rerun your code with a kinetic coefficient of friction of 0.1 and then 1.0.  How does increasing this coefficient change the accuracy of the Velocity-Verlet and neural network results?</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="Notebook2.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Notebook 2: What is a Neural Network?</p>
+        </div>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Julie Butler<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

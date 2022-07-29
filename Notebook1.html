@@ -1,0 +1,896 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notebook 1: Solving Differential Equations Numerically &#8212; Jupyter Books as Digital Textbooks</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Notebook 2: What is a Neural Network?" href="Notebook2.html" />
+    <link rel="prev" title="Solving Differential Equations in Classical Mechanics with Neural Networks" href="NN_for_CM.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Jupyter Books as Digital Textbooks</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Jupyter Books: An Easy to Use Software for Creating Digital Textbooks
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="NN_for_CM.html">
+   Solving Differential Equations in Classical Mechanics with Neural Networks
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Notebook 1: Solving Differential Equations Numerically
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Notebook2.html">
+     Notebook 2: What is a Neural Network?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Notebook3.html">
+     Notebook 3: Solving Differential Equations with Neural Networks
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Notebook1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FNotebook1.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Notebook1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-a-differential-equation-and-why-are-they-important-in-physics">
+   What is a Differential Equation and Why are They Important in Physics?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classification-of-differential-equations">
+     Classification of Differential Equations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numerical-methods-for-solving-differential-equations">
+   Numerical Methods for Solving Differential Equations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#an-introduction-to-discretization-for-numerical-methods">
+     An Introduction to Discretization for Numerical Methods
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#euler-s-method">
+     Euler’s Method
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-euler-cromer-method">
+     The Euler-Cromer Method
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-velocity-verlet-method">
+     The Velocity-Verlet Method
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#advanced-numerical-methods">
+     Advanced Numerical Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-problem-freefall-with-drag">
+   Example Problem: Freefall with Drag
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-set-up">
+     Problem Set-Up
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Euler’s Method
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#euler-cromer-method">
+     Euler-Cromer Method
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#velocity-verlet-method">
+     Velocity-Verlet Method
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#graphical-analysis-of-results">
+     Graphical Analysis of Results
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#numerical-analysis-of-results">
+     Numerical Analysis of Results
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice-what-you-have-learned">
+   Practice What You Have Learned
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="notebook-1-solving-differential-equations-numerically">
+<h1>Notebook 1: Solving Differential Equations Numerically<a class="headerlink" href="#notebook-1-solving-differential-equations-numerically" title="Permalink to this headline">¶</a></h1>
+<p>View this notebook on <a class="reference external" href="https://colab.research.google.com/drive/1UJSpttf1iFpagkjDpX0Lwb0JwJ4hlB0M?usp=sharing">Google Colab</a>.</p>
+<div class="section" id="what-is-a-differential-equation-and-why-are-they-important-in-physics">
+<h2>What is a Differential Equation and Why are They Important in Physics?<a class="headerlink" href="#what-is-a-differential-equation-and-why-are-they-important-in-physics" title="Permalink to this headline">¶</a></h2>
+<p>A differential equation is an equation that relates an unknown function to its derivatives (or possibly to just some constants).  The following are examples of differential equations:
+$<span class="math notranslate nohighlight">\(y'' - 2y' = cos(y)\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(\frac{d^2y}{dt^2} = -3y\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(\frac{dy}{dx} = 7\)</span>$</p>
+<p>Solving a differential equations means finding an equation for the original function (y in the above examples) such that the differential equation is satisfied.  Solving differential equations is a large area of mathematics.  You can learn more about how to solve differential equations at the resources linked at the bottom of this notebook.  This notebook, however, will focus on ways to solve differential equations computationally (using <em>numerical methods</em>).</p>
+<div class="section" id="classification-of-differential-equations">
+<h3>Classification of Differential Equations<a class="headerlink" href="#classification-of-differential-equations" title="Permalink to this headline">¶</a></h3>
+<p>There are several ways to classify differential equations (which can be read about in the references), but we only need to discuss on of the methods here.  A differential equation is said to be of the n-th order if the highest order derivative in the differential equation is to the n-th order.  For example <span class="math notranslate nohighlight">\(y''+y' = 2y\)</span> is a second order differential equation, <span class="math notranslate nohighlight">\(\frac{dy}{dx} = y\)</span> is a first order differential equation, and <span class="math notranslate nohighlight">\(y^{(3)} + y^{(5)} = 2y\)</span> is a 5th order differential equation.</p>
+<p>Differential equations of many orders are important in physics, but this module will focus only on second order differential equations (meaning the highest order derivative will be to the second order).  These second order differential equations are found in equations for acceleration (<span class="math notranslate nohighlight">\(a(t) = \frac{d^2y}{dt^2}\)</span>) in classical mechanics and in Schrodinger’s equation in quantum mechanics, for example.</p>
+</div>
+</div>
+<div class="section" id="numerical-methods-for-solving-differential-equations">
+<h2>Numerical Methods for Solving Differential Equations<a class="headerlink" href="#numerical-methods-for-solving-differential-equations" title="Permalink to this headline">¶</a></h2>
+<p>Numerical methods are algorithms which allow mathematical propblems to be solved approximately, but in a method that can be easily programmed. Numerically solving differential equations can be a bit tricky because the solution to a differential equation sould be a continous function, but computers can only solve problems in a discretized manner.  Therefore, we have to employ numerical methods which can solve these equations in a discretized manner.  Note that this means that we will get the solution of our differential equation only at certain points, instead of a continous solution as you would get from solving analytically, but numerical solvers can easily handle equations that would be difficult or impossible to solve analytically.</p>
+<p>This section of the notebook will discuss four numerical methods for solving second order differential equations.  They are aranged below in order of increasing accuracy.  Each of the below methods will assume that the equation for the second order differential equation is known, and they will solving for the first order derivative as well as the original equation.</p>
+<div class="section" id="an-introduction-to-discretization-for-numerical-methods">
+<h3>An Introduction to Discretization for Numerical Methods<a class="headerlink" href="#an-introduction-to-discretization-for-numerical-methods" title="Permalink to this headline">¶</a></h3>
+<p>Let’s assume that we know the equation for the velocity of an object as a function of time, v(t), and we want to find the position of that object with respect to time.  Analytically, we know that the velocity of an object is just the derivative of the position with respect to time:
+$<span class="math notranslate nohighlight">\(v(t) = \frac{dy(t)}{dt},\)</span><span class="math notranslate nohighlight">\( which means that we can find the position function analytically by simply integrating the velocity equation: \)</span><span class="math notranslate nohighlight">\(y(t) = \int_{t_{initial}}^{t_{final}} v(t)dt.\)</span>$</p>
+<p>However, when solving for the position function analytically, we have to take a different approach to discretize all of the variables.  Assuming we are only taking a very small time step, we can rewrite the derivative for velocity in an approximate form: $<span class="math notranslate nohighlight">\(v(t) = \frac{dy(t)}{dt} \approx \frac{\Delta y}{\Delta t}.\)</span>$</p>
+<p>Here we have used the variable <span class="math notranslate nohighlight">\(\Delta t\)</span>, which is known as the time step.  We can define the time step as: $<span class="math notranslate nohighlight">\(\Delta t = \frac{t_{final}-t_{initial}}{n},\)</span>$ where n is the number of points we wish to solve for position at.</p>
+<p>We can expand our approximate equation for velocity as: $<span class="math notranslate nohighlight">\(v(t) \approx \frac{\Delta y}{\Delta t} = \frac{y(t+\Delta t) - y(t)}{\Delta t}.\)</span>$</p>
+<p>Now we can solve the above equation to get an equation for the position (removing the approximation, especially for <span class="math notranslate nohighlight">\(\Delta t\)</span> <span class="math notranslate nohighlight">\(\approx\)</span> 0): $<span class="math notranslate nohighlight">\(y(t+\Delta t) = y(t) + v(t)\Delta t.\)</span>$</p>
+<p>From here we need to introduce a notation for discritized variables.  First for time.  We can say that the time at the ith point we are performing the calculation at can be written as: $<span class="math notranslate nohighlight">\(t \longrightarrow t_i = t_{initial} + i\Delta t,\)</span><span class="math notranslate nohighlight">\( for i = 0, 1, ..., n.  From  here we can also define discretized forms of our position and velocity equations using the same notation: \)</span><span class="math notranslate nohighlight">\(y(t) \longrightarrow y(t_i) = y_i\)</span><span class="math notranslate nohighlight">\( \)</span><span class="math notranslate nohighlight">\(v(t) \longrightarrow v(t_i) = v_i\)</span>$</p>
+<p>We also need to introduce the following notation for a position or velocity that is one time step ahead of or behind the ith point:
+$<span class="math notranslate nohighlight">\(y_{i\pm1} = y(t_i \pm \Delta t)\)</span><span class="math notranslate nohighlight">\( \)</span><span class="math notranslate nohighlight">\(v_{i\pm1} = v(t_i \pm \Delta t)\)</span>$</p>
+<p>Now, combining all of this together, we can write an equation for the position of the object in discretized form: $<span class="math notranslate nohighlight">\(y_{i+1} = y_i + v_i\Delta t.\)</span><span class="math notranslate nohighlight">\(. So, given an equation for the velocity of a system, the time step, and the initial conditions (starting position and velocity) we can solve for the position at any time step:
+\)</span><span class="math notranslate nohighlight">\(y_1 = y_0 + v_0\Delta t\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(y_2 = y_1 + v_1\Delta t\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(y_3 = y_2 + v_2\Delta t\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(...\)</span>$</p>
+<p>Note that the smaller the time step is the more accurate the solution to the differential equation will be, but this will also increase computational time.  Solving differential equations numerically can involve finding a balance between accuracy and run time.</p>
+</div>
+<div class="section" id="euler-s-method">
+<h3>Euler’s Method<a class="headerlink" href="#euler-s-method" title="Permalink to this headline">¶</a></h3>
+<p>Euler’s method is one of the simplest methods for solving second order differential equations, but it also has the largest error, with the error being proportional to the step size.  This does mean, however, that the error of the method can be decreased by decreasing the time step.</p>
+<p>Using acceleration as an example of a second order differential eqaution (with velocity being the first order differential equation and position being the original function), we can represent Euler’s method in eqution form as:
+$<span class="math notranslate nohighlight">\(v_{i+1} = v_i + a_i\Delta t,\)</span><span class="math notranslate nohighlight">\( and \)</span><span class="math notranslate nohighlight">\(y_{i+1} = y_i + v_i\Delta t.\)</span>$</p>
+<p>We can also computationally represent Euler’s method with a skeleton code as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1"># Add any other needed imports here</span>
+
+<span class="c1"># Add any needed set-up code here</span>
+
+<span class="n">DeltaT</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1"># The smaller the better for DeltaT</span>
+
+<span class="c1">#set up arrays </span>
+<span class="n">tfinal</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># Or whatever final time is needed</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">ceil</span><span class="p">(</span><span class="n">tfinal</span><span class="o">/</span><span class="n">DeltaT</span><span class="p">)</span> <span class="c1">#Assuming tinitial=0</span>
+
+<span class="c1"># set up arrays for t, a, v, and y and we can compare our results with analytical ones</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># Initial conditions (Change these if needed)</span>
+<span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1">#m/s</span>
+<span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.0</span> <span class="c1">#m</span>
+
+<span class="c1"># Start integrating using Euler&#39;s method</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># expression for acceleration</span>
+    <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="c1"># Add code here</span>
+    <span class="c1"># update velocity and position</span>
+    <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">DeltaT</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">DeltaT</span><span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="c1"># update time to next time step and compute analytical answer</span>
+    <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">DeltaT</span>
+    
+<span class="c1"># Compute the acceleration at the final time step</span>
+<span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="c1"># Add code here</span>
+
+</pre></div>
+</div>
+<p>Note that even though this example uses acceleration, velocity, and position, Euler’s method (and all other numerical methods shown in this notebook) can be used to solve any second order differential equation.  Also note that the code example above assumes that acceleration, velocity, and acceleration will be one dimensional quantities.  This code can easily be adapted to handle two or even three dimensional data simply by changing how the data arrays are set up.  Instead of</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>use</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>for a two dimensional data set, or</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>for a three dimensional data set.</p>
+</div>
+<div class="section" id="the-euler-cromer-method">
+<h3>The Euler-Cromer Method<a class="headerlink" href="#the-euler-cromer-method" title="Permalink to this headline">¶</a></h3>
+<p>The Euler-Cromer method is a slight variation on Euler’s method.  The difference is that the position is calculated using the velocity at the current time step instead of the previous time step.  The error on the Euler-Cromer method is proportional to <span class="math notranslate nohighlight">\(\Delta t\)</span> the same as for the Euler’s method, but there is an important difference between the two methods.  Euler’s method is known as an <em>energy increasing method</em>.  This means that, in general, the further a calculated point is from the starting point the less accurate it is.  However, the Euler-Cromer method is known as a <em>stable method</em>, meaning that the long range points will be as accurate as the close range ones.  This makes Euler-Cromer a better choice than Euler’s method when solving a differential equation over a wide range.</p>
+<p>We can represent Euler-Cromer method in equation form as:
+$<span class="math notranslate nohighlight">\(v_{i+1} = v_i + a_i\Delta t,\)</span><span class="math notranslate nohighlight">\( and \)</span><span class="math notranslate nohighlight">\(y_{i+1} = y_i + v_{i+1}\Delta t.\)</span>$</p>
+<p>We can also computationally represent Euler’s method with a skeleton code as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1"># Add any other needed imports here</span>
+
+<span class="c1"># Add any needed set-up code here</span>
+
+<span class="n">DeltaT</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1"># The smaller the better for DeltaT</span>
+
+<span class="c1">#set up arrays </span>
+<span class="n">tfinal</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># Or whatever final time is needed</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">ceil</span><span class="p">(</span><span class="n">tfinal</span><span class="o">/</span><span class="n">DeltaT</span><span class="p">)</span> <span class="c1">#Assuming tinitial=0</span>
+
+<span class="c1"># set up arrays for t, a, v, and y and we can compare our results with analytical ones</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># Initial conditions (Change these if needed)</span>
+<span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1">#m/s</span>
+<span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.0</span> <span class="c1">#m</span>
+
+<span class="c1"># Start integrating using Euler-Cromer</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># expression for acceleration</span>
+    <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="c1"># Add code here</span>
+    <span class="c1"># update velocity and position</span>
+    <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">DeltaT</span><span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">DeltaT</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="c1"># update time to next time step and compute analytical answer</span>
+    <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">DeltaT</span>
+    
+<span class="c1"># Compute the acceleration at the final time step</span>
+<span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="c1"># Add code here</span>
+
+</pre></div>
+</div>
+<p>Note that with Euler’s method it does not matter if you calculate the velocity before the position, but for Euler-Cromer, since the position depends on the velocity at the current time step, the Euler-Cromer velocity must be calculated before the position.</p>
+</div>
+<div class="section" id="the-velocity-verlet-method">
+<h3>The Velocity-Verlet Method<a class="headerlink" href="#the-velocity-verlet-method" title="Permalink to this headline">¶</a></h3>
+<p>The final numerical differential equation solver we will look at in detail is called the Velocity-Verlet method.  It is a bit more complicated than the previous two methods, but it does have some major advantages.  The error for the Velocity-Verlet method is proportional to <span class="math notranslate nohighlight">\(\Delta t^3\)</span>, compared to the previous two method which had an error proportional to <span class="math notranslate nohighlight">\(\Delta t\)</span> (<span class="math notranslate nohighlight">\(\Delta t^3 &lt; \Delta t\)</span> for <span class="math notranslate nohighlight">\(\Delta t &lt; 1\)</span>).  Velocity-Verlet is a stable method like Euler-Cromer, meaning that it will conserve the energy of the system, even when calculating over a longer time range.</p>
+<p>We can represent the Velocity-Verlet method in equation form as: $<span class="math notranslate nohighlight">\(x_{i+1} = x_i + v_i\Delta t + \frac{1}{2}a_i\Delta t^2\)</span><span class="math notranslate nohighlight">\( \)</span><span class="math notranslate nohighlight">\(v_{i+1} = v_i + \frac{1}{2}\Delta t (a_{i+1} + a_i),\)</span>$</p>
+<p>and in computational form as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1"># Add any other needed imports here</span>
+
+<span class="c1"># Add any needed set-up code here</span>
+
+<span class="n">DeltaT</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1"># The smaller the better for DeltaT</span>
+
+<span class="c1">#set up arrays </span>
+<span class="n">tfinal</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># Or whatever final time is needed</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">ceil</span><span class="p">(</span><span class="n">tfinal</span><span class="o">/</span><span class="n">DeltaT</span><span class="p">)</span> <span class="c1">#Assuming tinitial=0</span>
+
+<span class="c1"># set up arrays for t, a, v, and y and we can compare our results with analytical ones</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># Initial conditions (Change these if needed)</span>
+<span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1">#m/s</span>
+<span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.0</span> <span class="c1">#m</span>
+
+<span class="c1"># Start integrating using Euler-Cromer</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># expression for acceleration</span>
+    <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="c1"># Add code here</span>
+    <span class="c1"># update position</span>
+    <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">DeltaT</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">DeltaT</span><span class="o">**</span><span class="mi">2</span>
+    <span class="c1"># updated expression for acceleration</span>
+    <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="c1">#Add code here</span>
+    <span class="c1"># update velocity</span>
+    <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">DeltaT</span><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="c1"># update time to next time step and compute analytical answer</span>
+    <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">DeltaT</span>
+    
+
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="advanced-numerical-methods">
+<h3>Advanced Numerical Methods<a class="headerlink" href="#advanced-numerical-methods" title="Permalink to this headline">¶</a></h3>
+<p>There are more advanced numerical methods for solving differential equations as well.  These methods tend to be harder to implement by hand but are much more accurate than the methods detailed above.  For example, a popular numerical differential equation solver <a class="reference external" href="https://mathworld.wolfram.com/Runge-KuttaMethod.html">Runge Rutta</a> to the fourth order has an error that is proportional to <span class="math notranslate nohighlight">\(\Delta t^5\)</span>, significantly smaller than the above methods.</p>
+<p>To use these more advanced numerical differential equation solvers, it is common to use an implementation provided by a common code library.  For example, in Python the library <a class="reference external" href="https://docs.scipy.org/doc/scipy/index.html">SciPy</a> provides a wide range of numerical differential equation solvers which can be viewed <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/integrate.html">here</a>.  You can find plenty of examples of how to use these solver, <a class="reference external" href="https://docs.scipy.org/doc/scipy/tutorial/integrate.html#ordinary-differential-equations-solve-ivp">here</a> among other places.</p>
+<p>For the remainder of this module we will only use three simple numerical differential equation solvers described above (Euler’s, Euler-Cromer, and Velocity-Verlet), though it is useful for further studies of these topics to know how more advanced numerical differential equation solvers work.</p>
+</div>
+</div>
+<div class="section" id="example-problem-freefall-with-drag">
+<h2>Example Problem: Freefall with Drag<a class="headerlink" href="#example-problem-freefall-with-drag" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="problem-set-up">
+<h3>Problem Set-Up<a class="headerlink" href="#problem-set-up" title="Permalink to this headline">¶</a></h3>
+<p>Suggested background reading: Sections 2.1 and 2.2 from <em>Classical Mechanics</em> by John R. Taylor.</p>
+<p>Let’s assume that an object (m=1.0kg) has been released at some height above the surface of the Earth.  As the object falls it is subject to the force of Earth’s gravity pulling it downwards but also linear air resistance acting against the direction of motion (upwards in this case).</p>
+<p><img alt="Force Diagram" src="https://raw.githubusercontent.com/GDS-Education-Community-of-Practice/DSECOP/main/Solving_Differential_Equations_with_NNs/Force.png" /></p>
+<p>We cam define the following equations for the forces acting on the object.  For the force due to Earth’s gravity:</p>
+<div class="math notranslate nohighlight">
+\[\vec{F}_g = m\vec{g},\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\vec{g} = \langle 0,-9.81\rangle \frac{m}{s^2}$$.\\For linear air resistance, we can define the force as being proportional to the object's velocity:\\$$\vec{F}_{drag} = -b\vec{v},\end{aligned}\end{align} \]</div>
+<p>where b is a constant that depends on the objects shape, but is typically much less than 1.</p>
+<p>Therefore, we can define the net force on the object in vector form as:</p>
+<div class="math notranslate nohighlight">
+\[\vec{F}_{net} = \vec{F}_g + \vec{F}_{drag} = m\vec{g} - b\vec{v}.\]</div>
+<p>Since we are only interested in modelling the height of the object, we can restrict the net force equation to just the y-direction:</p>
+<div class="math notranslate nohighlight">
+\[F_{net,y} = mg-bv_y,\]</div>
+<p>where g as been redefined to be g = -9.81<span class="math notranslate nohighlight">\(\frac{m}{s^2}\)</span>.</p>
+<p>Using Newton’s second law (F=ma), we can define the acceleration of the object as:</p>
+<div class="math notranslate nohighlight">
+\[a_y = \frac{F_{net,y}}{m} = g-\frac{b}{m}v.\]</div>
+<p>We can translate the above equation for accleration into Python syntax that we can plug into our numerical differential equation solvers.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">g</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Here we have index both the acceleration and velocity to prepare them for being inserted into the for loops of the solvers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># IMPORTS</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">ceil</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Euler’s Method<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Below I have taken the Euler’s Method code from above and translated into into a function and added in the specific acceleration for this system.  As arguments to the function I have chosen to include the linear drag coefficient (<code class="docutils literal notranslate"><span class="pre">b</span></code>), the mass of the object (<code class="docutils literal notranslate"><span class="pre">m)</span></code>, the initial position of the object (<code class="docutils literal notranslate"><span class="pre">y_0</span></code>) and the final time (<code class="docutils literal notranslate"><span class="pre">tfinal</span></code>).  These were the values I would want to be able to change easily; the function could also be written with more or less arguments depending on the user’s needs.</p>
+<p>The Euler’s method function also only returns the position of the object at every time value.  This again could be changed to meet an individual user’s needs to return further values such as the acceleration or velocity at every time as well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="k">def</span> <span class="nf">euler</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">y_0</span><span class="p">,</span><span class="n">tfinal</span><span class="p">):</span>
+    <span class="c1"># Fix the value of DeltaT</span>
+    <span class="n">DeltaT</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="c1"># The smaller the better for DeltaT</span>
+
+    <span class="c1"># set up arrays </span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">ceil</span><span class="p">(</span><span class="n">tfinal</span><span class="o">/</span><span class="n">DeltaT</span><span class="p">)</span> <span class="c1">#Assuming tinitial=0</span>
+
+    <span class="c1"># set up arrays for t, a, v, and y and we can compare our results with analytical ones</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">y_euler</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="c1"># Initial conditions (Change these if needed)</span>
+    <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1">#m/s</span>
+    <span class="n">y_euler</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_0</span> <span class="c1">#m</span>
+
+    <span class="n">g</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9.81</span>
+
+    <span class="c1"># Start integrating using Euler&#39;s method</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># expression for acceleration</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span> <span class="o">-</span> <span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="c1"># update velocity and position</span>
+        <span class="n">y_euler</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_euler</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">DeltaT</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">DeltaT</span><span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="c1"># update time to next time step and compute analytical answer</span>
+        <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">DeltaT</span>
+
+    <span class="c1"># Compute the acceleration at the final time step</span>
+    <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span> <span class="o">-</span> <span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+    <span class="c1"># Return the numerical position</span>
+    <span class="k">return</span> <span class="n">y_euler</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="euler-cromer-method">
+<h3>Euler-Cromer Method<a class="headerlink" href="#euler-cromer-method" title="Permalink to this headline">¶</a></h3>
+<p>Below I have created a method that will solve for the position of our system using the Euler-Cromer method.  For simplicity and consistency I have kept the arguments and return values the same as the Euler’s method function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">euler_cromer</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">y_0</span><span class="p">,</span><span class="n">tfinal</span><span class="p">):</span>
+    <span class="n">DeltaT</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="c1"># The smaller the better for DeltaT</span>
+
+    <span class="c1"># set up arrays </span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">ceil</span><span class="p">(</span><span class="n">tfinal</span><span class="o">/</span><span class="n">DeltaT</span><span class="p">)</span> <span class="c1">#Assuming tinitial=0</span>
+
+    <span class="c1"># set up arrays for t, a, v, and y and we can compare our results with analytical ones</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">y_ec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="c1"># Initial conditions (Change these if needed)</span>
+    <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1">#m/s</span>
+    <span class="n">y_ec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_0</span> <span class="c1">#m</span>
+
+    <span class="c1"># Start integrating using Euler-Cromer</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># expression for acceleration</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span> <span class="o">-</span> <span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="c1"># update velocity and position</span>
+        <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">DeltaT</span><span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">y_ec</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_ec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">DeltaT</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># update time to next time step and compute analytical answer</span>
+        <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">DeltaT</span>
+
+    <span class="c1"># Compute the acceleration at the final time step</span>
+    <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="o">-</span><span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">y_ec</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="velocity-verlet-method">
+<h3>Velocity-Verlet Method<a class="headerlink" href="#velocity-verlet-method" title="Permalink to this headline">¶</a></h3>
+<p>Finally, I have created a method that will solve for the position of our system using the Velocity-Verlet method.  Here I have kept the arguments and return values the same as the previous two functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">velocity_verlet</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">y_0</span><span class="p">,</span><span class="n">tfinal</span><span class="p">):</span>
+    <span class="n">DeltaT</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="c1"># The smaller the better for DeltaT</span>
+
+    <span class="c1"># set up arrays </span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">ceil</span><span class="p">(</span><span class="n">tfinal</span><span class="o">/</span><span class="n">DeltaT</span><span class="p">)</span> <span class="c1">#Assuming tinitial=0</span>
+
+    <span class="c1"># set up arrays for t, a, v, and y and we can compare our results with analytical ones</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">y_vv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="c1"># Initial conditions (Change these if needed)</span>
+    <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1">#m/s</span>
+    <span class="n">y_vv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_0</span> <span class="c1">#m</span>
+
+    <span class="c1"># Start integrating using Euler-Cromer</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># expression for acceleration</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span> <span class="o">-</span> <span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="c1"># update position</span>
+        <span class="n">y_vv</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_vv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">DeltaT</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">DeltaT</span><span class="o">**</span><span class="mi">2</span>
+        <span class="c1"># updated expression for acceleration</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span> <span class="o">-</span> <span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># update velocity</span>
+        <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">DeltaT</span><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="c1"># update time to next time step and compute analytical answer</span>
+        <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">DeltaT</span>
+
+    <span class="k">return</span> <span class="n">y_vv</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>EXERCISE 1</strong>: Do the arguments and return values in the above three functions seem sufficient?  Are there any changes you think should be made?</p>
+<p>Delete this text and add your answer here.</p>
+</div>
+<div class="section" id="graphical-analysis-of-results">
+<h3>Graphical Analysis of Results<a class="headerlink" href="#graphical-analysis-of-results" title="Permalink to this headline">¶</a></h3>
+<p>Now let’s analyze how well each of our numerical differential equation solvers work by comparing their results to the exact, analytical position for our system.  For an object in freefall with linear drag we can model its height as a function of time by</p>
+<div class="math notranslate nohighlight">
+\[y(t) = v_{ter}t + (v_0-v_{ter})\tau (1-e^{-t/\tau})+y_0,\]</div>
+<p>where v<span class="math notranslate nohighlight">\(_0\)</span> and and y<span class="math notranslate nohighlight">\(_0\)</span> are the initial velocity and position, v<span class="math notranslate nohighlight">\(_{ter}\)</span> is the terminal velocity of the object defined as</p>
+<div class="math notranslate nohighlight">
+\[v_{ter} = \frac{mg}{b},\]</div>
+<p>and <span class="math notranslate nohighlight">\(\tau\)</span> is a quantity known as the characteristic time and is defined as</p>
+<div class="math notranslate nohighlight">
+\[\tau = \frac{v_{ter}}{g} = \frac{m}{b}\]</div>
+<p>Using the above equations, let’s create an array that holds the exact height of our object for every time of interest.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the drag constant, g, and the mass of the object</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">g</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9.81</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="c1"># Define the final time and the time step, create the time array</span>
+<span class="c1"># that will be used for the exact solution</span>
+<span class="n">tfinal</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">DeltaT</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">tfinal</span><span class="p">,</span><span class="n">DeltaT</span><span class="p">)</span>
+
+<span class="c1"># Set up the initial conditions (velocity and height)</span>
+<span class="n">v_0</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">y_0</span> <span class="o">=</span> <span class="mi">500</span>
+
+<span class="c1"># Define the termminal velocity and the characteristic time</span>
+<span class="n">v_ter</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span><span class="n">g</span><span class="o">/</span><span class="n">b</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="n">v_ter</span><span class="o">/</span><span class="n">g</span>
+
+<span class="c1"># Define the exact solution</span>
+<span class="n">y_exact</span> <span class="o">=</span> <span class="n">v_ter</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="p">(</span><span class="n">v_0</span><span class="o">-</span><span class="n">v_ter</span><span class="p">)</span><span class="o">*</span><span class="n">tau</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="o">/</span><span class="n">tau</span><span class="p">))</span><span class="o">+</span><span class="n">y_0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s generate the height of the object using all three numerical methods created above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the approximate positions from Euler&#39;s method, Euler-Cromer method,</span>
+<span class="c1"># and the Velocity-Verlet method</span>
+<span class="n">y_euler</span> <span class="o">=</span> <span class="n">euler</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">y_0</span><span class="p">,</span><span class="n">tfinal</span><span class="p">)</span>
+<span class="n">y_ec</span> <span class="o">=</span> <span class="n">euler_cromer</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">y_0</span><span class="p">,</span><span class="n">tfinal</span><span class="p">)</span>
+<span class="n">y_vv</span> <span class="o">=</span> <span class="n">velocity_verlet</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">y_0</span><span class="p">,</span><span class="n">tfinal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, let’s graph all four calculations for position on the same graph to see how they compare to each other.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare the results from the numerical differential equation solvers</span>
+<span class="c1"># to the exact solution graphically.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y_exact</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Exact&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y_euler</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Euler&#39;s&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y_ec</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Euler-Cromer&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y_vv</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Velocity-Verlet&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (seconds)&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Height (meters)&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Height (meters)&#39;)
+</pre></div>
+</div>
+<img alt="_images/Notebook1_24_1.png" src="_images/Notebook1_24_1.png" />
+</div>
+</div>
+<p><strong>EXERCISE 2</strong>: Based on the graph above, which numerical method seems to match the exact position best?</p>
+<p>Delete this text and type your answer here.</p>
+</div>
+<div class="section" id="numerical-analysis-of-results">
+<h3>Numerical Analysis of Results<a class="headerlink" href="#numerical-analysis-of-results" title="Permalink to this headline">¶</a></h3>
+<p>Since comparing results graphically is only an approximate answer, we want to be able to numerically compare our results and see which numerical method is the most accurate.  To determine numerical accuracy we will be using a metric known as root-mean squared error, which is defined as:</p>
+<div class="math notranslate nohighlight">
+\[RMSE(\vec{A},\vec{B}) = \sqrt{\frac{1}{N}\sum_{i=1}^N(A_i - B_i)^2},\]</div>
+<p>where <span class="math notranslate nohighlight">\(\vec{A}\)</span> and <span class="math notranslate nohighlight">\(\vec{B}\)</span> are data sets, each of length N.  RMSE is a measure of the average difference between corresponding points in the data sets.  If <span class="math notranslate nohighlight">\(\vec{A} = \vec{B}\)</span> then the RMSE error will be zero.</p>
+<p>The function below implements the RMSE equation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rmse</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inputs:</span>
+<span class="sd">            A,B (NumPy arrays)</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Unnamed (a float): the RMSE error between A and B</span>
+<span class="sd">        Calculates the RMSE error between A and B.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">B</span><span class="p">),</span><span class="s2">&quot;The data sets must be the same length to calcualte</span><span class="se">\</span>
+<span class="s2">        the RMSE.&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">((</span><span class="n">A</span><span class="o">-</span><span class="n">B</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, let’s calculate the RMSE error between the exact solution and each of the numerical solutions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RMSE Between Euler&#39;s Method and the Exact Solution:&quot;</span><span class="p">,</span> <span class="n">rmse</span><span class="p">(</span><span class="n">y_exact</span><span class="p">,</span><span class="n">y_euler</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RMSE Between Euler-Cromer Method and the Exact Solution:&quot;</span><span class="p">,</span> <span class="n">rmse</span><span class="p">(</span><span class="n">y_exact</span><span class="p">,</span><span class="n">y_ec</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RMSE Between Velocity-Verlet Method and the Exact Solution:&quot;</span><span class="p">,</span> <span class="n">rmse</span><span class="p">(</span><span class="n">y_exact</span><span class="p">,</span><span class="n">y_vv</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RMSE Between Euler&#39;s Method and the Exact Solution: 2.78995480666566
+RMSE Between Euler-Cromer Method and the Exact Solution: 2.8107206882532343
+RMSE Between Velocity-Verlet Method and the Exact Solution: 0.3026318710261818
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>EXERCISE 3</strong>: Knowing that a smaller RMSE means the numerical solution closely matches the exact solution, which numerical method produced the most accurate result?  Does the correlate with what you know about each numerical method?</p>
+<p>Delete this text and type your answer here.</p>
+<p><strong>EXERCISE 4</strong>: Increase the value of b (meaning that the magnitude of the drag force increases).  Investigate how this affects the accuracy of the three numerical results.</p>
+<p>Delete this text and type your answer here.</p>
+</div>
+</div>
+<div class="section" id="practice-what-you-have-learned">
+<h2>Practice What You Have Learned<a class="headerlink" href="#practice-what-you-have-learned" title="Permalink to this headline">¶</a></h2>
+<p><strong>Problem Set-up</strong>: A mass (m=0.25kg) is attached to wall by a spring with a spring constant of k=3000N/m and a relaxed length of 0.1m.  You may assume that air resistance, friction and any other forces besides the spring force can be neglicted.</p>
+<ol class="simple">
+<li><p>Set up an equation that describes the net force acting on the mass.  Using Newton’s second law, convert this to an equation for the acceleration of the mass.</p></li>
+<li><p>Convert the acceleration equation from above to a Python expression, using indexing on position or velocities as needed (as shown above).</p></li>
+<li><p>Set up a function that solves the the motion of the spring using Euler’s method. It can take any arguments but must return the position of the spring with respect to time.  Assume that the initial position of the mass is 0.2m and it is released from rest.  Use a t<span class="math notranslate nohighlight">\(_{final}\)</span> and <span class="math notranslate nohighlight">\(\Delta\)</span>t that seem reasonable for the problem.</p></li>
+<li><p>Set up a function that solves the the motion of the spring using the Euler-Cromer method. It can take any arguments but must return the position of the spring with respect to time. Assume that the initial position of the mass is 0.2m and it is released from rest. Use the same t<span class="math notranslate nohighlight">\(_{final}\)</span> and <span class="math notranslate nohighlight">\(\Delta\)</span>t as part 3.</p></li>
+<li><p>Set up a function that solves the the motion of the spring using the Velocity-Verlet method. It can take any arguments but must return the position of the spring with respect to time. Assume that the initial position of the mass is 0.2m and it is released from rest. Use the same t<span class="math notranslate nohighlight">\(_{final}\)</span> and <span class="math notranslate nohighlight">\(\Delta\)</span>t as part 3.</p></li>
+<li><p>Calculate an exact expression for the position of the mass.  For the same time values defined in part 3, calculate the exact solution for the motion of the mass.</p></li>
+<li><p>Compare the position of the mass obtined from applying Euler’s method, Euler-Cromer method, and the Velocity-Verlet method to the exact position by graphically analyzing the positions and by calculating the appropriate RMSE errors.</p></li>
+<li><p>Investigate the effects of changing the value of <span class="math notranslate nohighlight">\(\Delta\)</span>t on the accuracy of the numerical methods.  Rerun your code with <span class="math notranslate nohighlight">\(\Delta\)</span>t=0.1s and <span class="math notranslate nohighlight">\(\Delta\)</span>t=0.001s and compare to the results you just obtained.</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="NN_for_CM.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Solving Differential Equations in Classical Mechanics with Neural Networks</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Notebook2.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Notebook 2: What is a Neural Network?</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Julie Butler<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
