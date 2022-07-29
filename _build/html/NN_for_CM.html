@@ -1,0 +1,420 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solving Differential Equations in Classical Mechanics with Neural Networks &#8212; Jupyter Books as Digital Textbooks</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Notebook 1: Solving Differential Equations Numerically" href="Notebook1.html" />
+    <link rel="prev" title="Jupyter Books: An Easy to Use Software for Creating Digital Textbooks" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Jupyter Books as Digital Textbooks</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Jupyter Books: An Easy to Use Software for Creating Digital Textbooks
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   Solving Differential Equations in Classical Mechanics with Neural Networks
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Notebook1.html">
+     Notebook 1: Solving Differential Equations Numerically
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Notebook2.html">
+     Notebook 2: What is a Neural Network?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Notebook3.html">
+     Notebook 3: Solving Differential Equations with Neural Networks
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/NN_for_CM.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FNN_for_CM.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-of-module">
+   Summary of Module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pre-requisities">
+   Pre-requisities
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python-prerequisites">
+     Python Prerequisites
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-goals">
+   Learning Goals
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#physics">
+     Physics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-science">
+     Data Science
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#suggested-course-to-plug-into">
+   Suggested Course to Plug Into
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-needed-for-students-to-complete-the-assignments-6-hr">
+   Time Needed for Students to Complete the Assignments: 6+hr
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-needed-for-professors-to-teach-the-material-2-hr">
+   Time Needed for Professors to Teach the Material: 2+hr
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="solving-differential-equations-in-classical-mechanics-with-neural-networks">
+<h1>Solving Differential Equations in Classical Mechanics with Neural Networks<a class="headerlink" href="#solving-differential-equations-in-classical-mechanics-with-neural-networks" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Notebook 1: Numerical Differential Equation Solvers</strong>: Contains explanations of Euler’s method, the Euler-Cromer method, and the Velocity-Verlet method.  Also includes a worked out example of these methods applied to solving for the position of an object in freefall with drag and a prompt for students to apply these methods to solve for the motion of a simple harmonic osciallator.  This notebook can be viewed as prerequisite knowledge that could be assigned to the students as homework or covered in class at the professors choice. Filename: 01_differential_equations.ipynb</p></li>
+<li><p><strong>Notebook 2: Building a Neural Network from Scratch</strong>: This notebook can be viewed as prerequisite knowledge that could be assigned to the students as homework or covered in class at the professors choice.</p></li>
+<li><p><strong>Notebook 3: Solving Differential Equations with Neural Networks</strong>:  This is the main notebook for this module.</p></li>
+<li><p><strong>Notebook 4: Further Problems</strong>: This contains a collection of further problems that cover both the conceptual topics and coding problems covered in the above three notebooks.  These could be used as quiz, exam, or homework questions as needed. Filename: 04_further_problems.ipynb</p></li>
+<li><p><strong>Notebook 5: Solutions</strong>: This notebook contains solutions to all of the problems posed in Notebook 4, plus any questions posed in the first three notebooks of this module.  Will be removed in the final version of this module. Filename: 05_solutions.ipynb</p></li>
+</ul>
+</div>
+<div class="section" id="summary-of-module">
+<h2>Summary of Module<a class="headerlink" href="#summary-of-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="pre-requisities">
+<h2>Pre-requisities<a class="headerlink" href="#pre-requisities" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>A basic knowledge of the Python programming language is assumed along with a basic knowledge of the libraries NumPy and Matplotlib.</p></li>
+<li><p>The ability to write down the net force equation for a given system and the knowledge of Newton’s second law as well as the relationship between position, velocity, and acceleration.</p></li>
+<li><p>A basic knowledge of derivatives (including partial derivatives), integrals, and some basic matrix-vector manipulations.  Knowledge of differential equation is not assumed.</p></li>
+</ul>
+<div class="section" id="python-prerequisites">
+<h3>Python Prerequisites<a class="headerlink" href="#python-prerequisites" title="Permalink to this headline">¶</a></h3>
+<p>This module runs in Juupyter notebooks using the Python 3 programming languages.  Both of these need to be installed on a computer for these notebooks to run, or the notebooks can also be run on Google Colab without any local installations needed.  A link to the Google Colab versions of the noteboooks is provided at the top of each notebook.</p>
+<p>The Jupyter notebooks provided in this module assume that the following packages are installed.  These can be easily installed through any Python package manager such as pip3 or conda or come by default if using Google Colab.</p>
+<ul class="simple">
+<li><p>NumPy</p></li>
+<li><p>Matplotlib</p></li>
+<li><p>Autograd</p></li>
+<li><p>Scikit-Learn</p></li>
+<li><p>Keras</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="learning-goals">
+<h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="physics">
+<h3>Physics<a class="headerlink" href="#physics" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Be able to rewrite Newton’s second law as a second order differential equation for the motion of an object</p></li>
+<li><p>Be able to write a Python code that solves the second order differential equation for the position of the object using Euler’s method, the Euler-Cromer method, and the Velocity-Verlet Method</p></li>
+</ul>
+</div>
+<div class="section" id="data-science">
+<h3>Data Science<a class="headerlink" href="#data-science" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Be able to explain how a neural network functions, including the flow of data through the network and the mathematical model for a neuron in the network</p></li>
+<li><p>Be able to create a small neural network by hand using Python programming and the autograd Python library.</p></li>
+<li><p>Be able to apply a neural network to model a given data set</p></li>
+<li><p>Be able to understand and explain how a neural network can be used to solve a differential equation</p></li>
+<li><p>Be able to edit a code for a neural network that solves a differential equation so that the parameters of the systems or different or the differnetial equation is different</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="suggested-course-to-plug-into">
+<h2>Suggested Course to Plug Into<a class="headerlink" href="#suggested-course-to-plug-into" title="Permalink to this headline">¶</a></h2>
+<p>The material contained in this module was designed to work with a classical mechanics course, typically being a course taught to sophomore level college students or above.  The material contained in Notebook 1 does not go above the level usually taught at in an introductory mechanics course (assume drag is at least minimally covered), but some of the mathematics contained in Notebooks 2 and 3 may be difficult for students who have not taken more advanced calculus courses (partial derivatives, etc).</p>
+</div>
+<div class="section" id="time-needed-for-students-to-complete-the-assignments-6-hr">
+<h2>Time Needed for Students to Complete the Assignments: 6+hr<a class="headerlink" href="#time-needed-for-students-to-complete-the-assignments-6-hr" title="Permalink to this headline">¶</a></h2>
+<p>It is estimated that a student will need 2 hours each to complete Notebooks 1-3 and the estimated times to complete the extra problems contained in Notebook 4 are supplied per problem.  However, depending on a student’s Python knowledge, more time may be needed to fully understand the coding aspects of the notebooks.</p>
+</div>
+<div class="section" id="time-needed-for-professors-to-teach-the-material-2-hr">
+<h2>Time Needed for Professors to Teach the Material: 2+hr<a class="headerlink" href="#time-needed-for-professors-to-teach-the-material-2-hr" title="Permalink to this headline">¶</a></h2>
+<p>It is estimated to cover just Notebook 3 in class would take 2 class periods (assuming a 50 minute class period).  If the professor chooses to teach Notebooks 1 and 2 as part of the regular class as well it is estimated that Notebook 1 would take 1 50 minute class period and Notebook 2 would take 2 50 minute class periods, though these two notebooks can also be viewed as prerequisites and assigned as homework/out of class work for the students.</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Jupyter Books: An Easy to Use Software for Creating Digital Textbooks</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Notebook1.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Notebook 1: Solving Differential Equations Numerically</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Julie Butler<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

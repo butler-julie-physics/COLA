@@ -1,0 +1,11 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: NN_for_CM
+  sections:
+  - file: Notebook1
+  - file: Notebook2
+  - file: Notebook3
