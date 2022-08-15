@@ -1,11 +1,10 @@
 # Solving Differential Equations in Classical Mechanics with Neural Networks
 
 ## Table of Contents
-* **Notebook 1: Numerical Differential Equation Solvers**: Contains explanations of Euler's method, the Euler-Cromer method, and the Velocity-Verlet method.  Also includes a worked out example of these methods applied to solving for the position of an object in freefall with drag and a prompt for students to apply these methods to solve for the motion of a simple harmonic osciallator.  This notebook can be viewed as prerequisite knowledge that could be assigned to the students as homework or covered in class at the professors choice. Filename: 01_differential_equations.ipynb
+* **Notebook 1: Numerical Differential Equation Solvers**: Contains explanations of Euler's method, the Euler-Cromer method, and the Velocity-Verlet method.  Also includes a worked out example of these methods applied to solving for the position of an object in freefall with drag and a prompt for students to apply these methods to solve for the motion of a simple harmonic osciallator.  This notebook can be viewed as prerequisite knowledge that could be assigned to the students as homework or covered in class at the professors choice. 
 * **Notebook 2: Building a Neural Network from Scratch**: This notebook can be viewed as prerequisite knowledge that could be assigned to the students as homework or covered in class at the professors choice.
-* **Notebook 3: Solving Differential Equations with Neural Networks**:  This is the main notebook for this module.  
-* **Notebook 4: Further Problems**: This contains a collection of further problems that cover both the conceptual topics and coding problems covered in the above three notebooks.  These could be used as quiz, exam, or homework questions as needed. Filename: 04_further_problems.ipynb
-* **Notebook 5: Solutions**: This notebook contains solutions to all of the problems posed in Notebook 4, plus any questions posed in the first three notebooks of this module.  Will be removed in the final version of this module. Filename: 05_solutions.ipynb
+* **Notebook 3: Solving Differential Equations with Neural Networks**:  This is the main notebook for this module which goes through solving second order differential equations with neural networks applied to solving for the position of a system.
+* **Notebook 4: Further Problems**: This contains a collection of further problems that cover both the conceptual topics and coding problems covered in the above three notebooks.  These could be used as quiz, exam, or homework questions as needed. 
 
 ## Summary of Module
 
@@ -48,6 +47,9 @@ It is estimated that a student will need 2 hours each to complete Notebooks 1-3 
 
 It is estimated to cover just Notebook 3 in class would take 2 class periods (assuming a 50 minute class period).  If the professor chooses to teach Notebooks 1 and 2 as part of the regular class as well it is estimated that Notebook 1 would take 1 50 minute class period and Notebook 2 would take 2 50 minute class periods, though these two notebooks can also be viewed as prerequisites and assigned as homework/out of class work for the students.
 
-## References
 
 
+
+```python
+
+```

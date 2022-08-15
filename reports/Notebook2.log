@@ -32,7 +32,7 @@ from jax import random as npr
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m/var/folders/nn/x8vw0d756190nyy38jxd8nlh0000gn/T/ipykernel_17628/3931833151.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/nn/x8vw0d756190nyy38jxd8nlh0000gn/T/ipykernel_11060/3931833151.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      7[0m [0;32mimport[0m [0mnumpy[0m [0;32mas[0m [0mnp[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      8[0m [0;31m# Modules from the JAX library for creating neural networks[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 9[0;31m [0;32mimport[0m [0mjax[0m[0;34m.[0m[0mnumpy[0m [0;32mas[0m [0mjnp[0m[0;34m[0m[0;34m[0m[0m

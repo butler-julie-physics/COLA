@@ -390,22 +390,18 @@
 <div class="section" id="mathematics-of-a-neuron">
 <h2>Mathematics of  a Neuron<a class="headerlink" href="#mathematics-of-a-neuron" title="Permalink to this headline">¶</a></h2>
 <p>Each neuron is a mathematical function involving a column from a weight matrix, a scalar from a bias vector, and an activation function.  We can represent the mathematical form of the i-th neuron as:</p>
-<div class="math notranslate nohighlight">
-\[\hat{y}_i = f(\sum_{j=1}^M w_{ij}x_j + b_i),\]</div>
+<p><span class="math notranslate nohighlight">\(\hat{y}_i = f(\sum_{j=1}^M w_{ij}x_j + b_i),\)</span></p>
 <p>where x is the input to the neural network, w is the weight matrix which scales the input of the neuron, b is the bias vector that makes sure the output of the neuron is non-zero, and f is known as the activation function, which adds nonlinearity to the neuron.</p>
 </div>
 <div class="section" id="activation-functions">
 <h2>Activation Functions<a class="headerlink" href="#activation-functions" title="Permalink to this headline">¶</a></h2>
 <p>There are many common function to use as activation functions for neural networks, but three of the most commons ones are listed here.</p>
 <p><strong>Sigmoid</strong></p>
-<div class="math notranslate nohighlight">
-\[f(x) = \frac{1}{1 + e^{-x}}\]</div>
+<p><span class="math notranslate nohighlight">\(f(x) = \frac{1}{1 + e^{-x}}\)</span></p>
 <p><strong>Hyperbolic Tangent</strong></p>
-<div class="math notranslate nohighlight">
-\[f(x) = tanh(x) = \frac{e^{2x} - 1}{e^{2x} + 1}\]</div>
-<p>Relu (Rectified Linear Unit)</p>
-<div class="math notranslate nohighlight">
-\[f(x) = max(0, x)\]</div>
+<p><span class="math notranslate nohighlight">\(f(x) = tanh(x) = \frac{e^{2x} - 1}{e^{2x} + 1}\)</span></p>
+<p><strong>Relu (Rectified Linear Unit)</strong></p>
+<p><span class="math notranslate nohighlight">\(f(x) = max(0, x)\)</span></p>
 </div>
 <div class="section" id="a-note-on-hyperparameters">
 <h2>A Note on Hyperparameters<a class="headerlink" href="#a-note-on-hyperparameters" title="Permalink to this headline">¶</a></h2>
@@ -414,58 +410,44 @@
 <div class="section" id="mathematics-of-neural-networks-the-first-hidden-layer">
 <h2>Mathematics of Neural Networks: The First Hidden Layer<a class="headerlink" href="#mathematics-of-neural-networks-the-first-hidden-layer" title="Permalink to this headline">¶</a></h2>
 <p>For each neuron, i, in the first hidden layer of a neural network, we can represent its mathematical form as:</p>
-<div class="math notranslate nohighlight">
-\[\hat{y}_i^1 = f^1(\sum_{j=1}^M w_{ij}^1x_j + b_i^1).\]</div>
+<p><span class="math notranslate nohighlight">\(\hat{y}_i^1 = f^1(\sum_{j=1}^M w_{ij}^1x_j + b_i^1).\)</span></p>
 <p>We can also write out the mathematical form for the entire first hidden layer as:</p>
-<div class="math notranslate nohighlight">
-\[\hat{y}_1 = f^1(W_1\textbf{x} + \textbf{b}_1)\]</div>
+<p><span class="math notranslate nohighlight">\(\hat{y}_1 = f^1(W_1\textbf{x} + \textbf{b}_1)\)</span></p>
 </div>
 <div class="section" id="mathematics-of-neural-networks-the-second-hidden-layer">
 <h2>Mathematics of Neural Networks: The Second Hidden Layer<a class="headerlink" href="#mathematics-of-neural-networks-the-second-hidden-layer" title="Permalink to this headline">¶</a></h2>
 <p>Similarly for the second hidden layer, we can represent the mathematical form of each neuron as:</p>
-<div class="math notranslate nohighlight">
-\[y_i^2 = f^2(\sum_{j=1}^N w_{ij}^2y_j^1 + b_i^2).\]</div>
+<p><span class="math notranslate nohighlight">\(y_i^2 = f^2(\sum_{j=1}^N w_{ij}^2y_j^1 + b_i^2).\)</span></p>
 <p>Note here that the weights matriz is no longer multiplied by the inputs to the neural network (x), but rather to the output of the first hidden layer.  This is because the input to the first hidden layer is the input ot the neural network but the input to the second hidden layer is the output of the first hidden layer.  Therefore we can expand the above equation to be a bit more clear:</p>
-<div class="math notranslate nohighlight">
-\[y_i^2 = f^2(\sum_{j=1}^N w_{ij}^2f^1(\sum_{k=1}^M w_{kj}^1x_k + b_j^1) + b_i^2).\]</div>
+<p><span class="math notranslate nohighlight">\(y_i^2 = f^2(\sum_{j=1}^N w_{ij}^2f^1(\sum_{k=1}^M w_{kj}^1x_k + b_j^1) + b_i^2).\)</span></p>
 <p>We can also write a mathematical form for the entire second hidden layer as:</p>
-<div class="math notranslate nohighlight">
-\[\hat{y}_2 = f^2(W_2\hat{y}_1 + \textbf{b}_2),\]</div>
+<p><span class="math notranslate nohighlight">\(\hat{y}_2 = f^2(W_2\hat{y}_1 + \textbf{b}_2),\)</span></p>
 <p>or more explicity as</p>
-<div class="math notranslate nohighlight">
-\[\hat{y}_2 = f^2(W_2f^1(W_1\textbf(x) + \textbf{b}_1) + \textbf{b}_2).\]</div>
+<p><span class="math notranslate nohighlight">\(\hat{y}_2 = f^2(W_2f^1(W_1\textbf(x) + \textbf{b}_1) + \textbf{b}_2).\)</span></p>
 </div>
 <div class="section" id="mathematics-of-neural-networks-the-l-th-hidden-layer">
 <h2>Mathematics of Neural Networks: The l-th Hidden Layer<a class="headerlink" href="#mathematics-of-neural-networks-the-l-th-hidden-layer" title="Permalink to this headline">¶</a></h2>
 <p>Finally, we can use the pattern we have developed to write down the equation for the mathematical output for a neuron on the l-th hidden layer of the neural network.  For the i-th neuron on the l-th layer we can describe it mathematically as:</p>
-<div class="math notranslate nohighlight">
-\[y_i^l = f^l(\sum_{j=1}^{N_l} w_{ij}^ly_j^{l-1} + b_i^l),\]</div>
+<p><span class="math notranslate nohighlight">\(y_i^l = f^l(\sum_{j=1}^{N_l} w_{ij}^ly_j^{l-1} + b_i^l),\)</span></p>
 <p>and more explicitly as</p>
-<div class="math notranslate nohighlight">
-\[y_i^l = f^l(\sum_{j=1}^{N_l} w_{ij}^lf^{l-1}(\sum_{k=1}^{N_{l-1}} w_{kj}^{l-2}y_k^{l-1} + b_j^{l-1}) + b_i^l),\]</div>
+<p><span class="math notranslate nohighlight">\(y_i^l = f^l(\sum_{j=1}^{N_l} w_{ij}^lf^{l-1}(\sum_{k=1}^{N_{l-1}} w_{kj}^{l-2}y_k^{l-1} + b_j^{l-1}) + b_i^l),\)</span></p>
 <p>and finally all the way expanded as</p>
-<div class="math notranslate nohighlight">
-\[y_i^l = f^l(\sum_{j=1}^{N_l} w_{ij}^l f^{l-1}(\sum_{k=1}^{N_{l-1}} w_{jk}^{l-1}( \cdot \cdot \cdot f^1(\sum_{n=1}^M w_{mn}^1x_n + b_m^1) \cdot \cdot \cdot ) + b_k^{l-1}) + b_j^l).\]</div>
+<p><span class="math notranslate nohighlight">\(y_i^l = f^l(\sum_{j=1}^{N_l} w_{ij}^l f^{l-1}(\sum_{k=1}^{N_{l-1}} w_{jk}^{l-1}( \cdot \cdot \cdot f^1(\sum_{n=1}^M w_{mn}^1x_n + b_m^1) \cdot \cdot \cdot ) + b_k^{l-1}) + b_j^l).\)</span></p>
 <p>We can also write a mathematical expression for the output of the entire l-th layer as:</p>
-<div class="math notranslate nohighlight">
-\[\hat{y}_l = f^l (W_l \hat{y}_{l-1} + \textbf{b}_l),\]</div>
+<p><span class="math notranslate nohighlight">\(\hat{y}_l = f^l (W_l \hat{y}_{l-1} + \textbf{b}_l),\)</span></p>
 <p>which can be expanded to</p>
-<div class="math notranslate nohighlight">
-\[\hat{y}_l = f^l(W_lf^{l-1}(W_{l-1}\hat{y}_{l-2} + \textbf{b}_{l-1}) + \textbf{b}_l),\]</div>
+<p><span class="math notranslate nohighlight">\(\hat{y}_l = f^l(W_lf^{l-1}(W_{l-1}\hat{y}_{l-2} + \textbf{b}_{l-1}) + \textbf{b}_l),\)</span></p>
 <p>and finally to</p>
-<div class="math notranslate nohighlight">
-\[\hat{y}_l = f^l(W_lf^{l-1}(W_{l-1}(\cdot \cdot \cdot f^1(W_1\textbf{x} + \textbf{b}_1) \cdot \cdot \cdot) + \textbf{b}_{l-1}) + \textbf{b}_l).\]</div>
+<p><span class="math notranslate nohighlight">\(\hat{y}_l = f^l(W_lf^{l-1}(W_{l-1}(\cdot \cdot \cdot f^1(W_1\textbf{x} + \textbf{b}_1) \cdot \cdot \cdot) + \textbf{b}_{l-1}) + \textbf{b}_l).\)</span></p>
 <p>Its a complicated expression and can grow to be very large but it is a set equation that describes the output of a neural network with l-1 hidden layers and an output layer. So it is also possible to rephrase the defiition of a neural network to be an analytical function that maps a set of inputs to a set of outputs using a set of optimized parameters.</p>
 </div>
 <div class="section" id="neural-network-loss-function">
 <h2>Neural Network Loss Function<a class="headerlink" href="#neural-network-loss-function" title="Permalink to this headline">¶</a></h2>
 <p>A loss function is used to determine how much the output from a neural network differs from the true/expected result.  There is not a set loss function that is used with neural networks, but two common loss functions are the mean-squared error loss function and the mean absolute error function.  The mean-squared error loss function (MSE) can be defined as:</p>
-<div class="math notranslate nohighlight">
-\[J_{MSE}(W) = \frac{1}{N}\sum_{i=1}^N (y_i - \hat{y}_i)^2,\]</div>
+<p><span class="math notranslate nohighlight">\(J_{MSE}(W) = \frac{1}{N}\sum_{i=1}^N (y_i - \hat{y}_i)^2,\)</span></p>
 <p>where y is the true data set, <span class="math notranslate nohighlight">\(\hat{y}\)</span> is the neural network prediction, N is the number of data points in the set, and W are the weights of the neural network.  The loss function depends on the weights of the neural network because changing the weights of the neural network changes its output.</p>
 <p>The mean-absolute error loss function (MAE) has a similar form:</p>
-<div class="math notranslate nohighlight">
-\[J_{MAE}(W) = \frac{1}{N}\sum_{i=1}^N |y_i - \hat{y}_i|..\]</div>
+<p><span class="math notranslate nohighlight">\(J_{MAE}(W) = \frac{1}{N}\sum_{i=1}^N |y_i - \hat{y}_i|.\)</span></p>
 </div>
 <div class="section" id="finding-the-optimized-weights-and-biases">
 <h2>Finding The Optimized Weights and Biases<a class="headerlink" href="#finding-the-optimized-weights-and-biases" title="Permalink to this headline">¶</a></h2>
@@ -480,8 +462,7 @@
 <h2>Backpropagation<a class="headerlink" href="#backpropagation" title="Permalink to this headline">¶</a></h2>
 <p><img alt="NN" src="https://raw.githubusercontent.com/GDS-Education-Community-of-Practice/DSECOP/main/Solving_Differential_Equations_with_NNs/bp2.png" /></p>
 <p>After the forward pass comes backpropagation, where the error from the loss function is backpropagated through the layers of the neural networks and its weights are adjusted layer by layer so that the next forward pass will result in a reduced loss value.  A simple way to optimize the weights of a neural network during backpropagation is through an optimization technique known as gradient descent.  The weights of the neural network are simply adjusted by the derivative of the loss function with respect to the weights, scaled by a hyperparameter known as the learning rate:</p>
-<div class="math notranslate nohighlight">
-\[W = W - r_{l}\frac{\partial J(W}{\partial W}.\]</div>
+<p><span class="math notranslate nohighlight">\(W = W - r_{l}\frac{\partial J(W}{\partial W}.\)</span></p>
 <p>The learning rate (r<span class="math notranslate nohighlight">\(_l\)</span>) is a number typically much less than 1 and it is also a hyperparameter, so its value must be set before the neural network is run.</p>
 <p>The process of training a neural network involves many different iterations of forward pass followed by backpropagation.  Typically a training process will continue until a certain number of training iterations has been reached or the difference in the current loss value compared to the value from the previous iteration is below a certain threshold.  However, neural networks should not be trained for an overly long time because this will lead to something called overfitting where the neural network learns to match the data set it is trained with very well (so will show a small loss value) but loses all generality when given new data (so it will perform poorly when given the new data set).</p>
 <p><strong>EXERCISE 1</strong>: Take a moment and summarize what you have learned about neural networks in the text box below.</p>
@@ -510,7 +491,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">nn</span><span class="o">/</span><span class="n">x8vw0d756190nyy38jxd8nlh0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_17628</span><span class="o">/</span><span class="mf">3931833151.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">nn</span><span class="o">/</span><span class="n">x8vw0d756190nyy38jxd8nlh0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_11060</span><span class="o">/</span><span class="mf">3931833151.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># Modules from the JAX library for creating neural networks</span>
 <span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>

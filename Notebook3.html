@@ -319,8 +319,7 @@
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>An important result to come from studying neural networks is a theorm known as the Universal Approximation Theorem.  It states that a neural network with one hidden layer and a finite number of neurons can approximate any function to any given accuracy.  Of course in practice it may be hard to train a neural network to an accuracy wanted, but we can generally get the accuracy relatively high.</p>
 <p>The Universal Approximation Theorem is important for this module because we will be using it to validate the use of neural networks to model the position of an object.  We will do this given only the acceleration of the object and will work up to creating a neural network that models the position.  In doing so, we will be creating a neural network that solves the following differential equation:</p>
-<div class="math notranslate nohighlight">
-\[\frac{d^2y}{dt^2} = a(t,v,y,\vec{c}),\]</div>
+<p><span class="math notranslate nohighlight">\(\frac{d^2y}{dt^2} = a(t,v,y,\vec{c}),\)</span></p>
 <p>where the acceleration of the object, a, may be a function of time, velocity, position, and/or any constants <span class="math notranslate nohighlight">\(\vec{c}\)</span>.</p>
 <p>The below code cells walk you through the process of setting up a neural network that will solve a second order differential equation (in this case using acceleration to find position).  We will compare the results from the neural network to both the exact solution and the results from numerically solving the differential equation using the Velocity-Verlet method (the most accurate of the numerical differential equation solvers investigated).</p>
 </div>
@@ -346,7 +345,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">nn</span><span class="o">/</span><span class="n">x8vw0d756190nyy38jxd8nlh0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_17635</span><span class="o">/</span><span class="mf">2266482407.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">nn</span><span class="o">/</span><span class="n">x8vw0d756190nyy38jxd8nlh0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_11066</span><span class="o">/</span><span class="mf">2266482407.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># Modules from the JAX library for creating neural networks</span>
 <span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>
@@ -529,11 +528,9 @@
 <div class="section" id="trial-position">
 <h2>Trial Position<a class="headerlink" href="#trial-position" title="Permalink to this headline">¶</a></h2>
 <p>The below function defines the trial position as a function of the neural network (a general form we assume the equation for the position will take that will be fine-tuned by training the neural network).  Here we are assuming that we know the starting position y(t=0) and the starting velocity v(t=0), making this an initial value problem.  Let’s assume that your trial solution has the form:</p>
-<div class="math notranslate nohighlight">
-\[y_{trial}(t) = A + Bt + t^2NN(W,t),\]</div>
+<p><span class="math notranslate nohighlight">\(y_{trial}(t) = A + Bt + t^2NN(W,t),\)</span></p>
 <p>where A and B are a constants set by the initial conditions and NN is the output of the neural network that depends on both the weights (W) and the time.  As it turns out, A = y(t=0) and B = v(t=0) (both of which will be zero in the specific case of this problem).  This makes the final form of our trial solution:</p>
-<div class="math notranslate nohighlight">
-\[y_{trial}(t) = t^2NN(W,t).\]</div>
+<p><span class="math notranslate nohighlight">\(y_{trial}(t) = t^2NN(W,t).\)</span></p>
 <p>Note that we could have used any trial solution for the position as long as it satisfied the initial conditions.  The choice for this particular form of trial solution is discussed <a class="reference external" href="https://arxiv.org/pdf/physics/9705023.pdf">here</a>, though the mathematics can get a bit complicated in places.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
